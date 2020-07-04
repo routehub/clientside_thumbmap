@@ -13,7 +13,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "@mapbox/polyline": "^1.1.1",
     "d3": "^5.16.0",
+    "d3-geo": "^1.12.1",
+    "topojson": "^3.0.2",
     "vue": "^2.5.2"
   },
   "devDependencies": {
