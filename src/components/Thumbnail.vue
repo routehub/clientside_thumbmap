@@ -54,7 +54,15 @@ export default {
         .attr("fill", "none");
 
       // TODO : fix fitsize
-      projection.fitSize([window.innerWidth, window.innerHeight], geojson);
+      const widthPadding = window.innerWidth * 0.2;
+      const heightPadding = window.innerHeight * 0.1;
+      projection.fitExtent(
+        [
+          [widthPadding / 2, heightPadding / 2],
+          [window.innerWidth - widthPadding, window.innerHeight - heightPadding]
+        ],
+        geojson
+      );
       const t0 = projection.translate();
       const s0 = projection.scale();
       const interpolateTranslate = d3.interpolate(t0, projection.translate());
@@ -67,7 +75,7 @@ export default {
       };
 
       d3.transition()
-        .duration(750)
+        .duration(0)
         .tween("projection", function() {
           return interpolator;
         });
