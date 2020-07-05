@@ -6,6 +6,8 @@
 
 <script>
 import * as d3 from "d3";
+import { geoScaleBar } from "d3-geo-scale-bar";
+
 import * as topojson from "topojson";
 import * as polyline from "@mapbox/polyline";
 
@@ -52,6 +54,16 @@ export default {
         .attr("stroke-opacity", 0.8)
         .attr("stroke-width", 3)
         .attr("fill", "none");
+
+      const scaleBar = geoScaleBar()
+        .projection(projection)
+        .size([window.innerWidth, window.innerHeight])
+        .left(0.01)
+        .top(0.95)
+        .tickFormat(d3.format(","))
+        .label("km");
+
+      map.append("g").call(scaleBar);
 
       // TODO : fix fitsize
       const widthPadding = window.innerWidth * 0.2;
