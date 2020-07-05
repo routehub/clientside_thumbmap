@@ -40,6 +40,7 @@ export default {
         .attr("stroke-dasharray", 3);
 
       const line =
+        new URL(window.location).searchParams.get("line") ||
         "_`ovEkptaYjrAr`CvgBxkCbqCj~@fnCrcB|~CfaAnaG~OriCf{BdmAfeDtpAe@lPx~Blh@tsEnzBrfA~KryD|lBtu@xx@``CtdCka@l}Dci@hjClUdhCh]tqBxiAf`B`dAnxBfFlbDt`@~_CrNfr@tnBpLxl@r}@op@`oBpf@`cApPtzCqaBxaH_lBraKdoBnuIbd@llHeeB`iCqm@fdCzxBvdBbvBv_AbcA|rBrpAfpE}~@bzChFkp@nXwgEwr@ekEnAdmAlnAtzE_~@l{Cid@x`Cyo@dZxSxNRr{o@jh@ojAt}Bi@b{I{LztCgU|~DgdBpr@wcBpRmyBlt@udAzgAolBzJwgBhFmr@dcEafBj`Dw|Cd_A__GucAirDcy@_uBgbA_jD__DmmFgkJg}BunFqEibL_@cmL_oBq_Dqi@qoDsZkfDufClBuvCkj@qpCii@wiB_}A{{Ba_@o|CmaAafCzl@_oDndA{_Cwr@gdDw_AgxDqp@g|CquA}lBiBm~B}Ia_FysAm|DglDa[caGsSw{C}mBer@_lCobBoo@_cDkz@emByrB";
       const geojson = polyline.toGeoJSON(line);
 
