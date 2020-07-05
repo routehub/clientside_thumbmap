@@ -27,7 +27,7 @@ export default {
     const path = d3.geoPath().projection(projection);
 
     // 一時的に拝借 https://github.com/miyawa-tarou/japan_map_json/blob/master/data/topojson/pref.jso
-    d3.json("/static/pref.json").then(function(data) {
+    d3.json("./static/pref.json").then(function(data) {
       map
         .selectAll("path")
         .data(topojson.feature(data, data.objects.pref).features)
