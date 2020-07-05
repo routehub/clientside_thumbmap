@@ -55,16 +55,6 @@ export default {
         .attr("stroke-width", 3)
         .attr("fill", "none");
 
-      const scaleBar = geoScaleBar()
-        .projection(projection)
-        .size([window.innerWidth, window.innerHeight])
-        .left(0.01)
-        .top(0.95)
-        .tickFormat(d3.format(","))
-        .label("km");
-
-      map.append("g").call(scaleBar);
-
       // TODO : fix fitsize
       const widthPadding = window.innerWidth * 0.2;
       const heightPadding = window.innerHeight * 0.1;
@@ -91,6 +81,21 @@ export default {
         .tween("projection", function() {
           return interpolator;
         });
+
+      // スケール表示
+      const scaleSize =
+        new URL(window.location).searchParams.get("scale") || 10; // km
+      const scaleBar = geoScaleBar()
+        .projection(projection)
+        .size([window.innerWidth, window.innerHeight])
+        .left(0.01)
+        .top(0.95)
+        .distance(scaleSize)
+        .labelAnchor("middle")
+        .tickValues([0, scaleSize])
+        .label("km")
+        .tickSize(1); // The height of the bar
+      map.append("g").call(scaleBar);
     });
   }
 };
