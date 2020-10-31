@@ -85,11 +85,12 @@ export default {
       // スケール表示
       const scaleSize =
         new URL(window.location).searchParams.get("scale") || 10; // km
+      const scalePosition = new URL(window.location).searchParams.get("scale_position") || 0.9;
       const scaleBar = geoScaleBar()
         .projection(projection)
         .size([window.innerWidth, window.innerHeight])
         .left(0.01)
-        .top(0.95)
+        .top(scalePosition)
         .distance(scaleSize)
         .labelAnchor("middle")
         .tickValues([0, scaleSize])
